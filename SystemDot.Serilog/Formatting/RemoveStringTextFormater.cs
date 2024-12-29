@@ -10,7 +10,8 @@ public class RemoveStringTextFormater : ITextFormatter
     private readonly ITextFormatter _textFormatter;
     private readonly (string OldValue, string NewValue)[] _replaceStrings;
 
-    public RemoveStringTextFormater(ITextFormatter textFormatter,
+    public RemoveStringTextFormater(
+        ITextFormatter textFormatter,
         params (string OldValue, string NewValue)[] replaceStrings)
     {
         _textFormatter = textFormatter;

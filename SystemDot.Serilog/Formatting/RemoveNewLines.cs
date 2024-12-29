@@ -5,8 +5,17 @@ namespace SystemDot.Serilog.Formatting;
 
 public class RemoveNewLines : RemoveStringTextFormater
 {
-    public RemoveNewLines(ITextFormatter? textFormatter = null) : base(
+    public RemoveNewLines(
+        ITextFormatter? textFormatter = null) : base(
         textFormatter ?? new MessageTemplateTextFormatter("[{Timestamp:u} {Level:u3}] {Message:lj} {Exception}", null),
+        ("\n", "\\n"),
+        ("\r", "\\r"))
+    {
+    }
+
+    public RemoveNewLines(
+        string? outputTemplate = "[{Timestamp:u} {Level:u3}] {Message:lj} {Exception}") : base(
+        new MessageTemplateTextFormatter(outputTemplate, null),
         ("\n", "\\n"),
         ("\r", "\\r"))
     {
