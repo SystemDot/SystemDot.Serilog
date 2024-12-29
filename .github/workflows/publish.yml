@@ -25,7 +25,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Pack
-        run: dotnet pack ./SystemDot.Serilog/SystemDot.Serilog.csproj --configuration Release --no-build --output ./output -SkipDuplicate
+        run: dotnet pack ./SystemDot.Serilog/SystemDot.Serilog.csproj --configuration Release --no-build --output ./output
       
       - name: Push to NuGet
         env:
@@ -33,3 +33,4 @@ jobs:
         working-directory: output
         run: |
           dotnet nuget push "*.nupkg" -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
+  
